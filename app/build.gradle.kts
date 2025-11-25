@@ -41,4 +41,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.9.2")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // Add this line so XML Material3 themes exist
+    implementation("com.google.android.material:material:1.12.0")
 }
