@@ -3,7 +3,7 @@
 
     <application
         android:label="Money Manager"
-        android:theme="@style/Theme.Material3.DayNight">
+        android:theme="@style/Theme.MoneyManager">
         <activity
             android:name=".MainActivity"
             android:exported="true">
