@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id("com.android.application") version "8.4.2"
+    kotlin("android") version "1.9.22"
 }
 
 android {
@@ -14,25 +14,23 @@ android {
         versionCode = 1
         versionName = "0.1.0"
     }
+
     buildTypes {
         release {
             isMinifyEnabled = false
         }
     }
+
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.10"
     }
+
     packaging {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
-}
-
-repositories {
-    google()
-    mavenCentral()
 }
 
 dependencies {
