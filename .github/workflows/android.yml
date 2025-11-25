@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      JAVA_VERSION: '17'
       ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
       ANDROID_HOME: ${{ github.workspace }}/android-sdk
 
@@ -22,7 +21,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: temurin
-        java-version: ${{ env.JAVA_VERSION }}
+        java-version: 17
 
     - name: Prepare Android SDK directories
       run: |
@@ -37,7 +36,7 @@ jobs:
         mv cmdline-tools latest
         rm tools.zip
 
-    - name: Accept licenses & install SDK components
+    - name: Install SDK components
       run: |
         yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_SDK_ROOT" \
           "platform-tools" \
@@ -54,8 +53,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
 
-    - name: Gradle build (Debug APK)
-      run: ./gradlew assembleDebug
+    - name: Build (assembleDebug) without wrapper
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-version: 8.5
+        arguments: assembleDebug
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v4
