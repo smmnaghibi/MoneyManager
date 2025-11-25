@@ -56,7 +56,7 @@ jobs:
     - name: Build (assembleDebug) without wrapper
       uses: gradle/gradle-build-action@v3
       with:
-        gradle-version: 8.5
+        gradle-version: 8.6
         arguments: assembleDebug
 
     - name: Upload debug APK
